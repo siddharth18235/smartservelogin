@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import {useNavigate} from "react-router-dom"
 import logo from "./assets/logo.png";
 const LoginPage = () => {
-  const [email, setEmail] = useState('');
+  const [username, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [timeoutId,setTimeoutId] = useState(-1);
   const [validationError, setValidationError] = useState('');
 
   const navigate = useNavigate();
 
-  const validateEmail = (email) => {
+  const validateEmail = (username) => {
     const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return re.test(email);
+    return re.test(username);
   };
 
   const onEmailChange = (e) => {
@@ -28,8 +28,8 @@ const LoginPage = () => {
 
   const handleSubmit = () => {
 
-    if (!validateEmail(email)) {
-      setValidationError('Invalid email format!');
+    if (!validateEmail(username)) {
+      setValidationError('Invalid username format!');
       return;
     }
 
@@ -80,7 +80,7 @@ const LoginPage = () => {
         <div className="p-10 grid">
           <img alt='LOGO' src={logo} className='w-72 place-self-center grid' />
           <div class="grid gap-[10px]">
-            <input value={email} onChange={onEmailChange} type="email" id="email" class="bg-gray-50 w-[90%] place-self-center grid border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 placeholder:text-black" placeholder="Username" required />
+            <input value={username} onChange={onEmailChange} type="username" id="username" class="bg-gray-50 w-[90%] place-self-center grid border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 placeholder:text-black" placeholder="Username" required />
             <input value={password} onChange={onPasswordChange} type="password" id="password" class="bg-gray-50 w-[90%] place-self-center grid border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 placeholder:text-black" placeholder='Password' required />
             <button type="submit" onClick={handleSubmit} class="text-white bg-green-700 hover:bg-green-800 w-[90%] place-self-center grid focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Login</button>
             <a target="_blank" rel="noopener noreferrer" href='mailto:support@smartserv.io' className="grid text-gray-500 underline place-self-center text-sm">

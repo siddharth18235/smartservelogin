@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import LoginPage from './login_page';
+import LoginPage from './LoginPage';
 import Dashboard from './Dashboard';
 import {Route,Routes} from "react-router-dom"
 function App() {
